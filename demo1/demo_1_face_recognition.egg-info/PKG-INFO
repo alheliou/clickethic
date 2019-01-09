@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: demo-1-face-recognition
+Version: 0.0.2
+Summary: Petite démo permettant de trouver sur Google les photos correspondant au nom de l'utilisateur et ressemblant à sa photo
+Home-page: https://github.com/alheliou/clickethic/demo1
+Author: Alice Héliou
+Author-email: alice.heliou@gmail.com
+License: UNKNOWN
+Description: # Demo 1 : Face recognition
+        
+        Petite démo permettant de trouver sur Google les photos correspondant au nom de l'utilisateur et ressemblant à sa photo
+        
+        ## Requirements
+        Should work for Linus and Mac, not sure for Windows
+        * Python 3 (see https://www.python.org/downloads/)
+        * opencv:
+            https://docs.opencv.org/master/df/d65/tutorial_table_of_content_introduction.html
+        
+        * google_images_download:
+            https://github.com/hardikvasa/google-images-download
+            
+            `pip3 install google_images_download`
+        
+        * face_recognition:
+            https://github.com/ageitgey/face_recognition
+            
+            `pip3 install face_recognition`
+        
+        ## Configurations
+        You need to update the two variables of configurations.cfg
+        
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Description-Content-Type: text/markdown

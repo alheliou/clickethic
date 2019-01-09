@@ -1,0 +1,9 @@
+README.md
+setup.py
+demo_1_face_recognition.egg-info/PKG-INFO
+demo_1_face_recognition.egg-info/SOURCES.txt
+demo_1_face_recognition.egg-info/dependency_links.txt
+demo_1_face_recognition.egg-info/requires.txt
+demo_1_face_recognition.egg-info/top_level.txt
+face_recognition/__init__.py
+face_recognition/clickethic.py

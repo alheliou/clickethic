@@ -1,9 +1,25 @@
+"""
+Copyright (C) 2019  Alice Héliou, alice.heliou@gmail.com
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+"""
 import numpy as np
 import cv2
 import os, time
 import face_recognition
 from PIL import Image
-
+import configparser
 
 def changes(path_to_watch,before):
     while 1:
@@ -21,20 +37,26 @@ def picture_capture(cap):
 
 
 if __name__ == '__main__':
+    my_conf = configparser.ConfigParser()
+    my_conf.read('configurations.cfg')
+    saved_picture_dir=my_conf["paths"]["saved_picture_dir"]
+    google_picture_dir=my_conf["paths"]["google_picture_dir"]
+    print(saved_picture_dir)
     cap = cv2.VideoCapture(0)
     prenom = input("Entrez votre prénom: ")
     frame=picture_capture(cap)
     nom = input("Entrez votre nom: ")
-    path_to_watch0="/Users/aliceheliou/Documents/MIU/download/"+prenom+"\ "+nom
-    path_to_watch="/Users/aliceheliou/Documents/MIU/download/"+prenom+" "+nom
+    path_to_watch0=google_picture_dir+prenom+"\ "+nom
+    path_to_watch=google_picture_dir+prenom+" "+nom
     os.system("if [ -d "+path_to_watch0+" ]; then rm -r "+path_to_watch0+"; fi; mkdir "+path_to_watch0)
-    Arguments='python3 google_images_download.py -k "'+prenom+' '+nom+'" -l 50 -o /Users/aliceheliou/Documents/MIU/download/'
-    cmd='cd /Users/aliceheliou/Documents/MIU/download-images/google_images_download/ ;'+Arguments+' > out1.tmp &'
+    Arguments='googleimagesdownload -k "'+prenom+' '+nom+'" -l 10 -o '+google_picture_dir
+    cmd=Arguments+' > out1.tmp &'
     os.system(cmd)
 
     before = dict ([(f, None) for f in os.listdir(path_to_watch)])
 
-    Image_file='/Users/aliceheliou/Documents/MIU/known_people/'+prenom+' '+nom+'.png'
+    Image_file=saved_picture_dir+prenom+' '+nom+'_taken.png'
+    print(Image_file)
     cv2.imwrite(Image_file,frame)
 
     picture_of_you = face_recognition.load_image_file(Image_file)
@@ -42,7 +64,6 @@ if __name__ == '__main__':
     
     nb=0
     res=0
-    #imgs=[]
     
     while (nb<49):
         list_images, after=changes(path_to_watch, before)
@@ -52,7 +73,6 @@ if __name__ == '__main__':
             if len(unknown_face_encoding)>0:
                 results = face_recognition.compare_faces([your_face_encoding], unknown_face_encoding[0])
                 if results[0] == True:
-                    #print("Est-ce vous sur cette image ?")
                     if res==0:
                         cap.release()
                     try :
@@ -60,10 +80,6 @@ if __name__ == '__main__':
                         os.system(cmd)
                     except :
                         print("erreur d'ouverture")
-                    #imgs.append(cv2.imread(path_to_watch+"/"+images))
-                        #cv2.imshow('image'+str(res), imgs[res])
-                        #imgs.append(Image.open(path_to_watch+"/"+images))
-                        #imgs[res].show("image"+str(res))
                     res=res+1
             nb=nb+1
         before=after
@@ -73,12 +89,3 @@ if __name__ == '__main__':
     cv2.destroyAllWindows()
 
 
-
-#cmd='face_recognition /Users/aliceheliou/Documents/MIU/known_people/ /Users/aliceheliou/Documents/MIU/download/'+prenom+'\ '+nom+'> out2.tmp'
-#os.system(cmd)
-
-#cmd='grep ",'+prenom+' '+nom+'" out2.tmp'
-#os.system(cmd)
-
-#img = Image.open('picture.jpg')
-#img.show()
