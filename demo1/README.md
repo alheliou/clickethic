@@ -21,9 +21,9 @@ Should work for Linus and Mac, not sure for Windows
 
 ## Easy install (ne marche pas encore)
 
-    `python3 -m pip install --index-url https://test.pypi.org/simple/ demo_1_face_recognition`
+`python3 -m pip install --index-url https://test.pypi.org/simple/ demo_1_face_recognition`
 
-    Mais il risque d'y avoir un soucis avec les confs
+Mais il risque d'y avoir un soucis avec les confs
 
 ## Installation classique
 
@@ -35,7 +35,7 @@ Should work for Linus and Mac, not sure for Windows
 
 * Se placer dans le bon dossier
 
-    `cd Clickethic/demo1`
+    `cd Clickethic/demo1/face_recognition`
 
 * Modifier les dossier où télécharger les images dans configurations.cfg
 
