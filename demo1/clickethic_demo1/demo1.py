@@ -35,8 +35,28 @@ def picture_capture(cap):
         ret,frame = cap.read() # return a single frame in variable `frame`
     return frame
 
+"""This funtion set the directories used to store pictures"""
+def set_config():
+    saved_picture_dir = input("Entrez le chemin absolu pour saved_picture_dir: ")
+    google_picture_dir = input("Entrez le chemin absolu pour google_picture_dir: ")
+    config = configparser.ConfigParser()
+    config["paths"]={}
+    config["paths"]["saved_picture_dir"]=saved_picture_dir
+    config["paths"]["google_picture_dir"]=google_picture_dir
+    with open('configurations.cfg', 'w') as configfile:
+       config.write(configfile)
 
-if __name__ == '__main__':
+"""This funtion print the directories used to store pictures"""
+def get_config():
+    my_conf = configparser.ConfigParser()
+    my_conf.read('configurations.cfg')
+    saved_picture_dir=my_conf["paths"]["saved_picture_dir"]
+    google_picture_dir=my_conf["paths"]["google_picture_dir"]
+    print(saved_picture_dir)
+    print(google_picture_dir)
+
+"""This function runs demo1"""
+def demo1(nb_pictures=50):
     my_conf = configparser.ConfigParser()
     my_conf.read('configurations.cfg')
     saved_picture_dir=my_conf["paths"]["saved_picture_dir"]
@@ -49,7 +69,7 @@ if __name__ == '__main__':
     path_to_watch0=google_picture_dir+prenom+"\ "+nom
     path_to_watch=google_picture_dir+prenom+" "+nom
     os.system("if [ -d "+path_to_watch0+" ]; then rm -r "+path_to_watch0+"; fi; mkdir "+path_to_watch0)
-    Arguments='googleimagesdownload -k "'+prenom+' '+nom+'" -l 10 -o '+google_picture_dir
+    Arguments='googleimagesdownload -k "'+prenom+' '+nom+'" -l '+str(nb_pictures)+' -o '+google_picture_dir
     cmd=Arguments+' > out1.tmp &'
     os.system(cmd)
 
@@ -65,7 +85,7 @@ if __name__ == '__main__':
     nb=0
     res=0
     
-    while (nb<49):
+    while (nb<nb_pictures):
         list_images, after=changes(path_to_watch, before)
         for images in list_images:
             unknown_picture = face_recognition.load_image_file(path_to_watch+"/"+images)
@@ -88,4 +108,6 @@ if __name__ == '__main__':
     
     cv2.destroyAllWindows()
 
+if __name__ == '__main__':
+    demo1()
 

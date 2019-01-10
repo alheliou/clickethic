@@ -19,11 +19,22 @@ Should work for Linus and Mac, not sure for Windows
     
     `python3 -m pip install face_recognition`
 
-## Easy install (ne marche pas encore)
+## Easy install 
 
-`python3 -m pip install --index-url https://test.pypi.org/simple/ demo_1_face_recognition`
+* Installer opencv, et les autres requirements
 
-Mais il risque d'y avoir un soucis avec les confs
+* Installer la démo
+
+    `python3 -m pip install --index-url https://test.pypi.org/simple/ clickethic_demo1`
+
+* Importer le package
+
+    `python3`
+
+        import clickethic_demo1
+        from clickethic_demo1 import demo1
+        demo1.set_conf()
+        demo1.demo1()
 
 ## Installation classique
 

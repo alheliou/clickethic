@@ -1,4 +1,0 @@
-face_recognition
-numpy
-Pillow
-google_images_download

@@ -29,7 +29,7 @@ requirements=[
 ]
 
 setuptools.setup(
-    name="demo_1_face_recognition",
+    name="clickethic_demo1",
     version="0.0.2",
     author="Alice Héliou",
     author_email="alice.heliou@gmail.com",
@@ -39,6 +39,7 @@ setuptools.setup(
     url="https://github.com/alheliou/clickethic/demo1",
     packages=setuptools.find_packages(),
     install_requires=requirements,
+    python_requires='>=3',
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
