@@ -50,7 +50,7 @@ Should work for Linus and Mac, not sure for Windows
 
     `cd Clickethic/demo1/clickethic_demo1`
 
-* Modifier les dossier où télécharger les images dans configurations.cfg
+* Modifier les dossier où télécharger les images dans configurations.cfg, et se placer à l'endroit où est se fichier
 
 * Lancer la démo
 
