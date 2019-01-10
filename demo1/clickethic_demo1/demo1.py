@@ -61,7 +61,6 @@ def demo1(nb_pictures=50):
     my_conf.read('configurations.cfg')
     saved_picture_dir=my_conf["paths"]["saved_picture_dir"]
     google_picture_dir=my_conf["paths"]["google_picture_dir"]
-    print(saved_picture_dir)
     cap = cv2.VideoCapture(0)
     prenom = input("Entrez votre prénom: ")
     frame=picture_capture(cap)
@@ -76,7 +75,6 @@ def demo1(nb_pictures=50):
     before = dict ([(f, None) for f in os.listdir(path_to_watch)])
 
     Image_file=saved_picture_dir+prenom+' '+nom+'_taken.png'
-    print(Image_file)
     cv2.imwrite(Image_file,frame)
 
     picture_of_you = face_recognition.load_image_file(Image_file)

@@ -30,7 +30,7 @@ requirements=[
 
 setuptools.setup(
     name="clickethic_demo1",
-    version="0.0.2",
+    version="0.0.4",
     author="Alice Héliou",
     author_email="alice.heliou@gmail.com",
     description="Petite démo permettant de trouver sur Google les photos correspondant au nom de l'utilisateur et ressemblant à sa photo",

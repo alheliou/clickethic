@@ -21,7 +21,7 @@ Should work for Linus and Mac, not sure for Windows
 
 ## Easy install 
 
-* Installer opencv, et les autres requirements
+* Installer opencv, et les autres requirements (les requirements de type python pourront bientot etre installés automatiquement, mais pas encore)
 
 * Installer la démo
 
@@ -33,8 +33,10 @@ Should work for Linus and Mac, not sure for Windows
 
         import clickethic_demo1
         from clickethic_demo1 import demo1
-        demo1.set_conf()
+        demo1.set_config()
         demo1.demo1()
+
+    Par défault la démo se lance sur 50 images, mais si on demande demo1.demo1(10), elle se lancera sur 10 images
 
 ## Installation classique
 
@@ -46,13 +48,13 @@ Should work for Linus and Mac, not sure for Windows
 
 * Se placer dans le bon dossier
 
-    `cd Clickethic/demo1/face_recognition`
+    `cd Clickethic/demo1/clickethic_demo1`
 
 * Modifier les dossier où télécharger les images dans configurations.cfg
 
 * Lancer la démo
 
-    `python3 clickethic.py`
+    `python3 demo1.py`
     
 ## Configurations
 You need to update the two variables of configurations.cfg
